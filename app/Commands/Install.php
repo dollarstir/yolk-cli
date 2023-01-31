@@ -80,6 +80,7 @@ class Install extends Command
        
 
         $this->info('Done!');
+        $this->notify('Yolk', 'Your new app is ready to go!', 'yolk.png');
         $this->info('Your new app is ready to go!');
         $this->info('To run your app, cd into the directory '.$projectname.' and start your server with php -S localhost:8000');
     }
