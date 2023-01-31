@@ -31,6 +31,7 @@ class Install extends Command
         //
        
         $projectname= $this->argument(key: 'name');
+        $newurl = file_get_contents('https://phpyolk.com/Archive.zip');
       
        
         
