@@ -31,9 +31,41 @@ class Install extends Command
         //
        
         $projectname= $this->argument(key: 'name');
-        $newurl = file_get_contents('https://phpyolk.com/Archive.zip');
+       $url = 'http://192.168.199.126/frame/yolk/api.php?name='.$projectname;
+       $client  = curl_init($url);
+       curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
+    
+// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+	    $response = curl_exec($client);
+
+	
+	    $result = json_decode($response);
+
+
       
        
+
+// prefix: base_url/
+// http://192.168.199.120/1kball/dev/api/v1/
+
+// 1kball1min
+// luckypick5
+// speedy1min
+// speedy5d
+// lucky5d
+// fsat3
+// fast3
+// luckyfast3
+// 1kballpc28
+// speedypc28
+// luckypc28
+// lucky3d
+// speedypk10
+// luckypk10
+// speedy11x5
+// lucky11x5
+// lucky49x7
+// 1kball5d
         
         // $projectname = $this->ask('What is the name of your project?');
         $this->info('Creating a new Yolk app '.$projectname);
@@ -60,7 +92,8 @@ class Install extends Command
 
         // Open the archive file
         // shell_exec('unzip '.$local_file.' -d '.$path);
-        shell_exec(' curl https://phpyolk.com/Archive.zip --progress-bar  --output '.$projectname.'.zip');
+        $this->info($result);
+        shell_exec(' curl '.$result.' --progress-bar  --output '.$projectname.'.zip');
         $this->info('Unzipping........');
         $this->info('Please wait...');
 

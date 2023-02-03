@@ -1,3 +1,9 @@
 <?php
+header('Content-Type: application/json');
+$projectname = $_GET['name'];
+$newurl = 'https://phpyolk.com/Archive.zip';
 
-echo 'working api';
+
+
+
+echo json_encode($newurl);
